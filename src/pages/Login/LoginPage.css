@@ -1,0 +1,414 @@
+/* ============================================================
+   Login Page – Beltis RH
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  background-image: url('../../assets/login_bg.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg,
+      rgba(10, 25, 120, 0.84) 0%,
+      rgba(15, 40, 160, 0.80) 50%,
+      rgba(20, 50, 180, 0.77) 100%);
+  backdrop-filter: blur(1px);
+  z-index: 0;
+}
+
+.login-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: 48px 36px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ============================================================
+   Logo + Brand Name
+   ============================================================ */
+.login-logo-container {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  animation: fadeInDown 0.6s ease both;
+}
+
+.login-logo-img {
+  max-width: 300px;
+  /* Adjusted slightly for side-by-side */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 2px -8px rgba(0, 0, 0, 0.3));
+}
+
+.login-brand-name {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: 36px;
+  /* Bigger for side-by-side impact */
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.98);
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+  padding-left: 19px;
+  line-height: 1;
+}
+
+/* ============================================================
+   Formulário
+   ============================================================ */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.login-field {
+  position: relative;
+  width: 100%;
+}
+
+.login-field input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 50px;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: #222;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-field input::placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
+.login-field input:focus {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 3px rgba(80, 120, 255, 0.4), 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.login-field input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.password-field input {
+  padding-right: 52px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.toggle-password:hover {
+  color: #3b5bdb;
+}
+
+/* ============================================================
+   Lembrar minha senha
+   ============================================================ */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 4px;
+}
+
+.remember-me span:last-child {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.remember-me-checkbox-wrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.remember-me-checkbox-wrap input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.remember-me-checkbox-wrap input:checked~.custom-checkbox {
+  background: #3b5bdb;
+  border-color: #3b5bdb;
+  box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.25);
+}
+
+.custom-checkbox svg {
+  width: 12px;
+  height: 10px;
+}
+
+.remember-me:hover .custom-checkbox {
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================
+   Error message
+   ============================================================ */
+.login-error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #fecaca;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ============================================================
+   Botão Acessar
+   ============================================================ */
+.login-btn-primary {
+  width: 100%;
+  padding: 16px;
+  margin-top: 4px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(90deg, #3b5bdb 0%, #4c6ef5 100%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s, opacity 0.2s;
+  box-shadow: 0 6px 20px rgba(59, 91, 219, 0.5);
+}
+
+.login-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(90deg, #364fc7 0%, #4263eb 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(59, 91, 219, 0.6);
+}
+
+.login-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(59, 91, 219, 0.4);
+}
+
+.login-btn-primary:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.login-btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================================
+   Links secundários
+   ============================================================ */
+.login-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 28px;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.login-link {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+  padding: 4px 0;
+  position: relative;
+}
+
+.login-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: width 0.2s;
+}
+
+.login-link:hover::after {
+  width: 100%;
+}
+
+.login-link:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.login-footer {
+  margin-top: 48px;
+  text-align: center;
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.login-footer p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* ============================================================
+   Animações
+   ============================================================ */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   Responsividade
+   ============================================================ */
+@media (max-width: 480px) {
+  .login-content {
+    padding: 40px 24px 36px;
+  }
+
+  .login-logo {
+    margin-bottom: 40px;
+  }
+
+  .login-logo img {
+    max-width: 180px;
+  }
+
+  .login-brand-name {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .login-links {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-content {
+    padding: 56px 56px 48px;
+  }
+
+  .login-logo img {
+    max-width: 260px;
+  }
+
+  .login-brand-name {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force Light Theme for Ionic Containers */
+:root {
+    --ion-background-color: #FFFFFF !important;
+    --ion-text-color: #1e293b !important;
+}
+
+body {
+    @apply bg-white text-slate-800;
+}
