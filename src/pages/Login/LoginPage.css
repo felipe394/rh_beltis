@@ -378,24 +378,28 @@
    ============================================================ */
 @media (max-width: 480px) {
   .login-content {
-    padding: 40px 24px 36px;
+    padding: 32px 16px 24px;
   }
 
-  .login-logo {
-    margin-bottom: 40px;
+  .login-logo-container {
+    margin-bottom: 32px;
+    gap: 12px;
   }
 
-  .login-logo img {
-    max-width: 180px;
+  .login-logo-img {
+    max-width: 140px;
   }
 
   .login-brand-name {
-    font-size: 18px;
-    letter-spacing: 2px;
+    font-size: 24px;
+    letter-spacing: 4px;
+    padding-left: 12px;
   }
 
   .login-links {
-    gap: 24px;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -404,11 +408,11 @@
     padding: 56px 56px 48px;
   }
 
-  .login-logo img {
+  .login-logo-img {
     max-width: 260px;
   }
 
   .login-brand-name {
-    font-size: 24px;
+    font-size: 36px;
   }
 }
